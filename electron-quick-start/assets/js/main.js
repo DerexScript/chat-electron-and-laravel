@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", async function(event) {
                     </div>
                     <div class="card-body">
                         ${msg.msg}
+                        
                     </div>
                     <div class="card-footer text-muted">
                         ${msg.updated_at}
@@ -45,6 +46,20 @@ document.addEventListener("DOMContentLoaded", async function(event) {
             div.classList.add("mb-2");
             div.innerHTML = str;
             document.querySelector("#msg").appendChild(div);
+
+            // Scroll para baixo
+            bodyUpdate()
         }
     });
+
+    const messages = document.getElementById('messages')
+    const textBox = document.getElementById('textBox')
+    console.log(textBox.getBoundingClientRect().height)
+    messages.style.marginBottom = textBox.getBoundingClientRect().height
+
+    bodyUpdate()
 });
+
+function bodyUpdate(){
+    window.scrollTo(0,document.body.scrollHeight);
+}
